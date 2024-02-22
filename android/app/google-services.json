@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1051625771373",
+    "project_id": "mhealthapp-9377f",
+    "storage_bucket": "mhealthapp-9377f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051625771373:android:d74f563bc757b0a3008a64",
+        "android_client_info": {
+          "package_name": "com.example.healthapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZKslft-VOtcL08_6nvnb25_vw1C3f2_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051625771373:android:e1d2643406f100bd008a64",
+        "android_client_info": {
+          "package_name": "com.example.project_cdm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZKslft-VOtcL08_6nvnb25_vw1C3f2_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
