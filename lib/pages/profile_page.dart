@@ -31,7 +31,7 @@ class _ProfliePageState extends State<ProfliePage> {
             signOut().then((value) => Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => const AuthPage())));
           },
-          child: Text('Log Out'),
+          child: const Text('Log Out'),
         ),
       ),
     );

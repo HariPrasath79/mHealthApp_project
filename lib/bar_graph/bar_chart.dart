@@ -14,7 +14,7 @@ class WeeklyGraph extends StatelessWidget {
 
   const WeeklyGraph({
     super.key,
-    this.maxY,
+    required this.maxY,
     required this.monValue,
     required this.tueValue,
     required this.wedValue,
@@ -38,7 +38,36 @@ class WeeklyGraph extends StatelessWidget {
     myBarData.initilizeBarData();
 
     return BarChart(BarChartData(
-        maxY: 100,
+        maxY: maxY,
+        barTouchData: BarTouchData(
+          enabled: true,
+          allowTouchBarBackDraw: true,
+          touchTooltipData: BarTouchTooltipData(
+            getTooltipItem: (group, groupIndex, rod, rodIndex) {
+              String label = "";
+              String datay = group.barRods[rodIndex].toY.toInt().toString();
+              switch (group.x) {
+                case 0:
+                  label = '$datay %';
+                case 1:
+                  label = '$datay %';
+                case 2:
+                  label = '$datay %';
+                case 3:
+                  label = '$datay %';
+                case 4:
+                  label = '$datay %';
+                case 5:
+                  label = '$datay %';
+                case 6:
+                  label = '$datay %';
+              }
+              return BarTooltipItem(label, const TextStyle(fontSize: 15));
+            },
+            tooltipBgColor: Colors.white,
+            tooltipRoundedRadius: 10,
+          ),
+        ),
         minY: 0,
         borderData: FlBorderData(show: false),
         titlesData: const FlTitlesData(
@@ -62,14 +91,16 @@ class WeeklyGraph extends StatelessWidget {
                 x: data.x,
                 barRods: [
                   BarChartRodData(
-                      toY: data.y,
-                      color: Colors.grey[700],
-                      width: 25,
-                      borderRadius: BorderRadius.circular(20),
-                      backDrawRodData: BackgroundBarChartRodData(
-                        color: Colors.white,
-                        toY: maxY,
-                      ))
+                    toY: data.y,
+                    color: Colors.grey[600],
+                    width: 25,
+                    borderRadius: BorderRadius.circular(20),
+                    backDrawRodData: BackgroundBarChartRodData(
+                      show: true,
+                      color: Colors.white,
+                      toY: maxY,
+                    ),
+                  )
                 ],
               ),
             )

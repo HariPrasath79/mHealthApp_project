@@ -35,7 +35,7 @@ class _AuthCheckState extends State<AuthPage> with TickerProviderStateMixin {
             bloc: bloc,
             listener: (context, state) {
               if (state is AuthLoadingState) {
-                CircularProgressIndicator.adaptive();
+                const CircularProgressIndicator.adaptive();
               }
               if (state is AuthSuccessState) {
                 Navigator.of(context).pushAndRemoveUntil(
