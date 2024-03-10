@@ -1,27 +1,27 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:project_cdm/authentication/auth_page.dart';
-import 'package:project_cdm/authentication/service/shared_prefs.dart';
 import 'package:project_cdm/bottom_navigation_bar.dart';
+import 'package:project_cdm/features/authentication/auth_page.dart';
+import 'package:project_cdm/features/authentication/bloc/auth_bloc.dart';
+import 'package:project_cdm/features/authentication/service/shared_prefs.dart';
+import 'package:project_cdm/features/home/models/food_item_model.dart';
+import 'package:project_cdm/features/home/models/todo_model.dart';
 import 'package:project_cdm/firebase_options.dart';
-import 'package:project_cdm/models/todo_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  bool signInStatus = await SharedPrefs.checkSignInStatus();
   await Hive.initFlutter((await getApplicationDocumentsDirectory()).path);
   Hive.registerAdapter(TodoModelAdapter());
-  await Hive.openBox('services');
+  Hive.registerAdapter(FoodItemModelAdapter());
   await Hive.openBox<TodoModel>('todoList');
-  await SharedPrefs.checkSignInStatus().then(
-    (value) {
-      runApp(MyApp(
-        signInStatus: value,
-      ));
-    },
-  );
+  await Hive.openBox('services');
+  runApp(MyApp(signInStatus: signInStatus));
 }
 
 class MyApp extends StatelessWidget {
@@ -30,10 +30,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: signInStatus ? const BottomNavigationBarWidget() : const AuthPage(),
-      theme: ThemeData(useMaterial3: true),
+    return BlocProvider(
+      create: (context) => AuthBloc(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home:
+            signInStatus ? const BottomNavigationBarWidget() : const AuthPage(),
+        theme: ThemeData(useMaterial3: true),
+      ),
     );
   }
 }

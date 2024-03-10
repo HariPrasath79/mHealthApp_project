@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project_cdm/pages/feedback_page.dart';
-import 'package:project_cdm/pages/habit_page.dart';
-import 'package:project_cdm/pages/home_page.dart';
-import 'package:project_cdm/pages/profile_page.dart';
+import 'package:project_cdm/features/feedback/ui/feedback_page.dart';
+import 'package:project_cdm/features/habit_monitor/ui/habit_page.dart';
+import 'package:project_cdm/features/home/ui/home_page.dart';
+import 'package:project_cdm/features/profile/ui/profile_page.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
   const BottomNavigationBarWidget({super.key});
