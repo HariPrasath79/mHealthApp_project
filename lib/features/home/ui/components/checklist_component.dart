@@ -50,9 +50,9 @@ class LabeledCheckbox extends StatelessWidget {
               isWater
                   ? const SizedBox()
                   : IconButton(
-                      icon: const Icon(Icons.arrow_right),
+                      icon: const Icon(Icons.edit_note),
                       onPressed: onPressed,
-                      iconSize: 33,
+                      // iconSize: 33,
                     ),
             ],
           ),

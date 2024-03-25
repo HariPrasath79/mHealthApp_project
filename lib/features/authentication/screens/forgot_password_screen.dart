@@ -17,6 +17,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final bloc = AuthBloc();
   bool isPopUpScreen = false;
   int count = 0;
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

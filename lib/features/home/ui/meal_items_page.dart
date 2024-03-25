@@ -61,7 +61,6 @@ class _MealPageState extends State<MealPage> {
                         itemCount: weekDay.length,
                         itemBuilder: (context, index) {
                           String key = widget.id.toString() + index.toString();
-                          // final item = weekData[currindex.toString()];
 
                           return SizedBox(
                             width: 100,
@@ -109,33 +108,24 @@ class _MealPageState extends State<MealPage> {
                           itemBuilder: (context, index) {
                             final drag = data[index] as Map<String, dynamic>;
                             final itemData = FoodItemModel.fromMap(drag);
+                            Widget card({required double height}) => Card(
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: const CircleBorder(),
+                                child: SizedBox(
+                                  height: height,
+                                  child: Image.network(
+                                    itemData.imgUrl,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ));
                             return Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Draggable<FoodItemModel>(
+                                LongPressDraggable<FoodItemModel>(
                                   data: itemData,
-                                  feedback: Card(
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    shape: const CircleBorder(),
-                                    child: SizedBox(
-                                      height: 120,
-                                      child: Image.network(
-                                        itemData.imgUrl,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  child: Card(
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    shape: const CircleBorder(),
-                                    child: SizedBox(
-                                      height: 120,
-                                      child: Image.network(
-                                        itemData.imgUrl,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
+                                  feedback: card(height: 110),
+                                  childWhenDragging: card(height: 100),
+                                  child: card(height: 120),
                                 ),
                                 Text(itemData.name),
                               ],

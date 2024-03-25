@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 class InputTextFieldComponent extends StatelessWidget {
   final TextEditingController controller;
   final String hint;
-  final Icon prefIcon;
+  final int? maxLines;
+  final int? minLines;
+  final Icon? prefIcon;
+  final bool expands;
+  final String? labeltext;
   final IconButton? suffixIcon;
   final String? errorText;
   final bool obscuredText;
@@ -17,15 +21,19 @@ class InputTextFieldComponent extends StatelessWidget {
     super.key,
     required this.controller,
     required this.hint,
-    required this.prefIcon,
+    this.prefIcon,
     this.errorText,
+    this.labeltext,
     this.onChanged,
+    this.expands = false,
     this.inputType,
     this.validator,
     this.suffixIcon,
     this.obscuredText = false,
     this.focusNode,
     this.onFieldSubmitted,
+    this.maxLines,
+    this.minLines,
   });
 
   @override
@@ -37,11 +45,15 @@ class InputTextFieldComponent extends StatelessWidget {
       validator: validator,
       obscureText: obscuredText,
       controller: controller,
+      minLines: minLines,
+      maxLines: maxLines,
+      expands: expands,
       textInputAction: TextInputAction.previous,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(13),
         ),
+        labelText: labeltext,
         prefixIcon: prefIcon,
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(13),

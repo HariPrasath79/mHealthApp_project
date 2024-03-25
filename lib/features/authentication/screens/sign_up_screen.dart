@@ -26,6 +26,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool containsSpecialChar = false;
   bool containsEightChar = false;
   String? errorText;
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _nameController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<AuthBloc>(context);
@@ -64,6 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     controller: _passwordController,
                     obscuredText: hidePass,
                     hint: 'Password',
+                    maxLines: 1,
                     suffixIcon: IconButton(
                       icon: Icon(hidePass
                           ? CupertinoIcons.eye_fill

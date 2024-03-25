@@ -25,6 +25,13 @@ class _SignInScreenState extends State<SignInScreen> {
 
   bool obscuredText = true;
   @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<AuthBloc>(context);
     return Padding(
@@ -53,6 +60,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   onFieldSubmitted: (val) {},
                   controller: _passwordController,
                   hint: 'Password',
+                  maxLines: 1,
                   obscuredText: obscuredText,
                   validator: (val) {
                     if (val!.isEmpty) {

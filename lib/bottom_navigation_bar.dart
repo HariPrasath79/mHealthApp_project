@@ -18,7 +18,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
     HomePage(),
     HabitPage(),
     FeedbackPage(),
-    ProfliePage(),
+    ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -36,23 +36,24 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
         unselectedLabelStyle: const TextStyle(color: Colors.black),
         useLegacyColorScheme: false,
         showUnselectedLabels: true,
-        items: [
+        elevation: 20,
+        items: const [
           BottomNavigationBarItem(
-              icon: const Icon(Icons.checklist),
-              label: 'Todo',
-              backgroundColor: Colors.grey[300]),
+            icon: Icon(Icons.checklist),
+            label: 'Todo',
+          ),
           BottomNavigationBarItem(
-              icon: const Icon(Icons.grid_4x4_outlined),
-              label: 'Habit',
-              backgroundColor: Colors.grey[300]),
+            icon: Icon(Icons.fastfood_outlined),
+            label: 'Foods',
+          ),
           BottomNavigationBarItem(
-              icon: const Icon(Icons.message_outlined),
-              label: 'Feedback',
-              backgroundColor: Colors.grey[300]),
+            icon: Icon(Icons.message_outlined),
+            label: 'Feeds',
+          ),
           BottomNavigationBarItem(
-              icon: const Icon(Icons.person),
-              label: 'Profile',
-              backgroundColor: Colors.grey[300])
+            icon: Icon(Icons.dashboard),
+            label: 'Profile',
+          )
         ],
       ),
       body: pages[currentindex],

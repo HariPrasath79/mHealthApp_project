@@ -66,7 +66,7 @@ class WeeklyGraph extends StatelessWidget {
               },
               tooltipBgColor: Colors.white,
               tooltipRoundedRadius: 10,
-              direction: TooltipDirection.bottom),
+              direction: TooltipDirection.top),
         ),
         minY: 0,
         borderData: FlBorderData(show: false),
@@ -92,12 +92,12 @@ class WeeklyGraph extends StatelessWidget {
                 barRods: [
                   BarChartRodData(
                     toY: data.y,
-                    color: Colors.grey[600],
+                    color: Colors.blueGrey,
                     width: 25,
                     borderRadius: BorderRadius.circular(20),
                     backDrawRodData: BackgroundBarChartRodData(
                       show: true,
-                      color: Colors.white,
+                      color: Colors.grey[300],
                       toY: maxY,
                     ),
                   )
